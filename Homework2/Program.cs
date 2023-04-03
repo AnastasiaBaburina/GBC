@@ -48,8 +48,9 @@ else
 //Задача 15: Напишите программу, которая принимает на вход цифру,
 // обозначающую день недели, и проверяет, является ли этот день выходным.
 
-
+/*
 Console.Write("Введите цифру, обозначающую день недели: ");
 int num1 = Convert.ToInt32(Console.ReadLine());
 if (Weekend(num1) == true) Console.WriteLine("Да");
 if (Weekend(num1) == false) Console.WriteLine("Нет");
+*/
