@@ -14,11 +14,19 @@ double distance (double x1, double y1, double z1, double x2, double y2, double z
     return res;
 }
 
+void cubedNumber (int N)
+{
+    Console.WriteLine("Кубы чисел от 1 до N: ");
+    for (int i = 1; i < N+1; i++)
+    {
+        Console.WriteLine(i + " - " + Math.Pow(i,3));
+    }
+}
 
 //Задача 19
 //Напишите программу, которая принимает на вход пятизначное число и проверяет,
 //является ли оно палиндромом.
-
+/*
 Console.Write("Введите пятизначное число: ");
 int num = Convert.ToInt32(Console.ReadLine());
 
@@ -28,12 +36,12 @@ if ((num >= 10000) && (num < 100000))
     else Console.WriteLine("Число не является палиндромом ");
 }
 else Console.WriteLine("Вы ввели неверное число ");
-
+*/
 
 //Задача 21
 //Напишите программу, которая принимает на вход координаты двух точек
 //и находит расстояние между ними в 3D пространстве.
-
+/*
 Console.WriteLine("Введите координаты двух точек");
 Console.Write("x1: ");
 double x1 = Convert.ToInt32(Console.ReadLine());
@@ -49,3 +57,11 @@ Console.Write("z2: ");
 double z2 = Convert.ToInt32(Console.ReadLine());
 
 Console.WriteLine("Расстояние между этими точками = " + Math.Round(distance(x1, y1, z1, x2, y2, z2), 2));
+*/
+//Задача 23
+//Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.
+/*
+Console.Write("Введите число N: ");
+int N = Convert.ToInt32(Console.ReadLine());
+cubedNumber(N);
+*/
