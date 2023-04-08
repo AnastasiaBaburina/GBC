@@ -54,4 +54,4 @@ Console.Write("Сумма цифр в числе: " + digitSum(num));
 //Задача 29: Напишите программу, которая задаёт массив 
 //из 8 элементов и выводит их на экран.
 
-showArray (createArray(8));
+//showArray (createArray(8));
