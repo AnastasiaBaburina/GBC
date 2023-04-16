@@ -30,7 +30,27 @@ void ShowDouble2DArray (double[,] array)
     Console.WriteLine();
 }
 
+void ElementPosition (double[,] array, int row, int column)
+{
+    if ( row >= array.GetLength(0) || column >= array.GetLength(1))
+        Console.WriteLine("Элемента с такими индексами в массиве нет");
+    else Console.WriteLine(Math.Round(array[row,column],3));
+}
+
 //Задача 47. Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
 
 double[,] doubleArray = CreateRandomDoubleArray();
 ShowDouble2DArray(doubleArray);
+
+//Задача 50. Напишите программу, которая на вход принимает позиции элемента в двумерном массиве,
+// и возвращает значение этого элемента или же указание, что такого элемента нет.
+
+//Буду использовать массив из предыдущей задачи
+Console.WriteLine("Задайте индексы элемента");
+Console.Write("Строка: ");
+int row = Convert.ToInt32(Console.ReadLine());
+Console.Write("Столбец: ");
+int column = Convert.ToInt32(Console.ReadLine());
+ElementPosition(doubleArray, row, column);
+
+//ПРОВЕРЬ ВТООРУЮ
