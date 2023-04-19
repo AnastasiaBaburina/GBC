@@ -46,6 +46,30 @@ void SortMaxToMin (int[,] array)
 
 }
 
+int MinRow (int[,] array)
+{
+    int row = 0;
+    int minSum = 0;
+    for (int j = 0; j < array.GetLength(1); j++)
+        minSum = minSum + array[0,j];
+
+    for (int i = 1; i < array.GetLength(0); i++)
+    {
+        int sum = 0;
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            sum = sum + array[i,j];
+        }
+        if (sum < minSum)
+        {
+            row = i;
+            minSum = sum;
+        }
+    } 
+    return row;
+}
+
+
 //Задача 54: Задайте двумерный массив.
 // Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
 /*
@@ -54,6 +78,12 @@ Show2DArray(array);
 SortMaxToMin(array);
 Show2DArray(array);
 */
-
+//Задача 56: Задайте прямоугольный двумерный массив.
+//Напишите программу, которая будет находить строку с наименьшей суммой элементов.
+/*
+int [,] array = CreateRandomArray();
+Show2DArray(array);
+Console.WriteLine("Строка с наименьшей суммой элементов: " + (MinRow(array) + 1) );
+*/
 
 
