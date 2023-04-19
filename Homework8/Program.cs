@@ -57,9 +57,7 @@ int MinRow (int[,] array)
     {
         int sum = 0;
         for (int j = 0; j < array.GetLength(1); j++)
-        {
             sum = sum + array[i,j];
-        }
         if (sum < minSum)
         {
             row = i;
@@ -69,6 +67,18 @@ int MinRow (int[,] array)
     return row;
 }
 
+int [,] MatrixProduct (int[,] array1, int[,] array2)
+{
+    int[,] result = new int [array1.GetLength(0), array2.GetLength(1)];
+    for (int i = 0; i < result.GetLength(0); i++)
+        for (int j = 0; j < result.GetLength(1); j++)
+        {
+            result[i,j] = 0;
+            for (int k = 0; k < array1.GetLength(1); k++) 
+                result[i,j] = result[i,j] + (array1[i,k] * array2[k,j]);
+        }
+    return result;
+}
 
 //Задача 54: Задайте двумерный массив.
 // Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
@@ -85,5 +95,20 @@ int [,] array = CreateRandomArray();
 Show2DArray(array);
 Console.WriteLine("Строка с наименьшей суммой элементов: " + (MinRow(array) + 1) );
 */
+//Задача 58: Задайте две матрицы.
+//Напишите программу, которая будет находить произведение двух матриц.
 
+Console.WriteLine("Первая матрица: ");
+int [,] array1 = CreateRandomArray();
+Show2DArray(array1);
+Console.WriteLine("Вторая матрица: ");
+int [,] array2 = CreateRandomArray();
+Show2DArray(array2);
+if (array1.GetLength(1)!=array2.GetLength(0))
+    Console.WriteLine("Умножение этих матриц невозможно");
+else 
+{
+    Console.WriteLine("Произведение матриц: ");
+    Show2DArray(MatrixProduct(array1, array2));
+}
 
