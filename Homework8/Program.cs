@@ -24,7 +24,10 @@ void Show2DArray (int[,] array)
     for (int i = 0; i < array.GetLength(0); i++)
     {
         for (int j = 0; j < array.GetLength(1); j++) 
-            Console.Write(array[i,j] + " ");
+        {
+            if (array[i,j] < 10) Console.Write("0" + array[i,j] + " ");
+            else Console.Write(array[i,j] + " "); 
+        }
         Console.WriteLine();
     }
     Console.WriteLine();
@@ -136,6 +139,58 @@ void Show3DArray (int[,,] array)
     Console.WriteLine();
 }
 
+int[,] SpiralArray (int rows, int columns)
+{
+    int[,] array = new int [rows, columns];
+    int value = 1;
+    for (int a = 0; a < rows; a++)
+        for (int b = 0; b < columns; b++)
+            array[a,b] = 0;
+
+    int x = 0;
+    int y = 0;
+    do
+    {
+        for (int j = y; j < columns - y; j++) 
+        { 
+            if (array[x,j]==0)
+            {
+                array[x,j] = value;
+                value+=1;
+            }
+        }
+        for (int i = 1 + x; i < rows - x; i++)
+        {
+            if (array[i,columns - 1 - y]==0)
+            {
+                array[i,columns - 1 - y] = value;
+                value+=1;
+            }
+        }
+        for (int j = columns - 2 - y; j >= 0 + y; j--)
+        {
+            if (array[rows - 1 - x, j] == 0)
+            {
+                array[rows- 1 - x, j] = value;
+                value+=1;
+            }
+        }
+        for (int i = rows - 2 - x; i > 0 + x; i--)
+        {
+            if (array[i,y]==0)
+            {
+                array[i,y] = value;
+                value+=1;
+            }
+        }
+        x+=1;
+        y+=1;
+    }
+    while (value < rows*columns + 1);
+    
+    return array;
+}
+
 //Задача 54: Задайте двумерный массив.
 // Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
 /*
@@ -171,9 +226,18 @@ else
 */
 //Задача 60.Сформируйте трёхмерный массив из неповторяющихся двузначных чисел.
 //Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
+/*
 int[,,] array = Create3DArray();
 Show3DArray(array);
+*/
+//Задача 62. Напишите программу, которая заполнит спирально массив 
+/*
+Console.Write("Введите количество строк: ");
+int rows = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите количество столбцов: ");
+int columns = Convert.ToInt32(Console.ReadLine());
 
-
-//Спиральное заполнение матрицы
+int[,] array = SpiralArray(rows,columns);
+Show2DArray(array);
+*/
 
