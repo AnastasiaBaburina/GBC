@@ -1,4 +1,4 @@
-﻿// Домашнее задание №7
+﻿// Домашнее задание №8
 
 int[,] CreateRandomArray ()
 {
@@ -80,6 +80,62 @@ int [,] MatrixProduct (int[,] array1, int[,] array2)
     return result;
 }
 
+int [] CreateNonrepeatingArray (int N)
+{
+    int [] variations = new int [N];
+    variations[0] = new Random().Next(10, 100);
+    for (int i = 1; i < N; i++)
+    {
+        bool flag = false;
+        do
+        {
+            variations[i] = new Random().Next(10, 100);
+            flag = true;
+            for (int i2 = 0; i2 < i; i2++)
+                if (variations[i] == variations[i2]) flag = false;
+        }
+        while (flag == false);
+    }
+    return variations;
+}
+
+int [,,] Create3DArray ()
+{
+    Console.Write("Введите количество строк: ");
+    int rows = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Введите количество столбцов: ");
+    int columns = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Введите глубину: ");
+    int depth = Convert.ToInt32(Console.ReadLine());
+
+    //Создаю нужное количество неповторяющихся двузначных чисел
+    int [] variations = CreateNonrepeatingArray(rows*columns*depth);
+
+    int[,,] array = new int [rows,columns,depth];
+    //Заполняю массив созданными ранее значениями
+    int index = 0;
+    for (int i = 0; i < rows; i++)
+        for (int j = 0; j < columns; j++)
+            for (int k = 0; k < depth; k++)
+            {
+               array[i,j,k] = variations[index];
+               index+=1;
+            }
+    return array;
+}
+
+void Show3DArray (int[,,] array)
+{
+    for (int k = 0; k < array.GetLength(2); k++)
+        for (int i = 0; i < array.GetLength(0); i++)
+        {
+            for (int j = 0; j < array.GetLength(1); j++)
+                Console.Write(array[i,j,k] + "(" + i + "," + j + "," + k + ")" + " ");
+            Console.WriteLine();
+        }
+    Console.WriteLine();
+}
+
 //Задача 54: Задайте двумерный массив.
 // Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
 /*
@@ -97,13 +153,14 @@ Console.WriteLine("Строка с наименьшей суммой элеме�
 */
 //Задача 58: Задайте две матрицы.
 //Напишите программу, которая будет находить произведение двух матриц.
-
+/*
 Console.WriteLine("Первая матрица: ");
 int [,] array1 = CreateRandomArray();
 Show2DArray(array1);
 Console.WriteLine("Вторая матрица: ");
 int [,] array2 = CreateRandomArray();
 Show2DArray(array2);
+
 if (array1.GetLength(1)!=array2.GetLength(0))
     Console.WriteLine("Умножение этих матриц невозможно");
 else 
@@ -111,4 +168,12 @@ else
     Console.WriteLine("Произведение матриц: ");
     Show2DArray(MatrixProduct(array1, array2));
 }
+*/
+//Задача 60.Сформируйте трёхмерный массив из неповторяющихся двузначных чисел.
+//Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
+int[,,] array = Create3DArray();
+Show3DArray(array);
+
+
+//Спиральное заполнение матрицы
 
